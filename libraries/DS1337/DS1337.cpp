@@ -122,8 +122,8 @@ const char* DateTime::iso8601() const {
     str[ 5] = byte(m / 10) + '0';
     str[ 6] = byte(m % 10) + '0';
     str[ 7] = '-';
-    str[ 8] = byte(m / 10) + '0';
-    str[ 9] = byte(m % 10) + '0';
+    str[ 8] = byte(d / 10) + '0';
+    str[ 9] = byte(d % 10) + '0';
     str[10] = 'T';
     str[11] = byte(hh / 10) + '0';
     str[12] = byte(hh % 10) + '0';
