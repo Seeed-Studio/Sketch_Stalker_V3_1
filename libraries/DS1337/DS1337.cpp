@@ -111,6 +111,33 @@ long DateTime::get() const {
     return time2long(days, hh, mm, ss);
 }
 
+const char* DateTime::iso8601() const {
+    static char str[20]; // 0000-00-00T00:00:00
+
+    str[ 0] = byte(yOff / 1000 + 2) + '0';
+    str[ 1] = byte(yOff / 100 % 10) + '0';
+    str[ 2] = byte(yOff / 10 % 10) + '0';
+    str[ 3] = byte(yOff % 10) + '0';
+    str[ 4] = '-';
+    str[ 5] = byte(m / 10) + '0';
+    str[ 6] = byte(m % 10) + '0';
+    str[ 7] = '-';
+    str[ 8] = byte(d / 10) + '0';
+    str[ 9] = byte(d % 10) + '0';
+    str[10] = 'T';
+    str[11] = byte(hh / 10) + '0';
+    str[12] = byte(hh % 10) + '0';
+    str[13] = ':';
+    str[14] = byte(mm / 10) + '0';
+    str[15] = byte(mm % 10) + '0';
+    str[16] = ':';
+    str[17] = byte(ss / 10) + '0';
+    str[18] = byte(ss % 10) + '0';
+    str[19] = '\0';
+
+    return str;
+}
+
 static uint8_t bcd2bin (uint8_t val) { return val - 6 * (val >> 4); }
 static uint8_t bin2bcd (uint8_t val) { return val + 6 * (val / 10); }
 

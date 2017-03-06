@@ -64,6 +64,9 @@ public:
 
     // 32-bit time as seconds since 1/1/2000
     long get() const;   
+    
+    // ISO8601 format : YYYY-MM-DDThh:mm:ss (eg 1997-07-16T19:20:30)
+    const char* iso8601() const;
 
 protected:
     uint8_t yOff, m, d, hh, mm, ss, wday;
