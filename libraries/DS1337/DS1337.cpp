@@ -167,6 +167,7 @@ void DS1337::adjust(const DateTime& dt) {
   Wire.write((byte)bin2bcd(dt.month()));
   Wire.write((byte)bin2bcd(dt.year() - 2000));  
   Wire.endTransmission();
+  writeRegister(DS1337_STATUS_REG, 0);  // Reset all Flags inc. OSF
 
 }
 
